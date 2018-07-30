@@ -1,0 +1,74 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+    <script>
+
+        var human = (function () {
+            function human() {
+                this.name = 'hello';
+                this.height = 180;
+                this.weight = 60;
+                this.eyes = 'big';
+            };
+
+            /**
+             * @author: wukangjun
+             * @param {Number（参数数据类型）} width: 宽度
+             * @param {Number} height: 高度
+             * @timer: 2018.2.10（时间版本）
+             * */
+            human.prototype.getheight = function () {
+
+            }
+            human.prototype.getweight = function () {
+
+            }
+            console.log(human);
+            return human;
+        })();
+
+        var worker = (function (_human) {
+            var worker_1 = new _human();
+
+            function worker(name) {
+                _human.call(this);
+                this.name = name || 'sb.'
+                this.job = 'engineer';
+                this.workplace = 'Shanghai';
+
+            };
+            worker.prototype = worker_1.__proto__;
+            worker.prototype.getwork = function () {
+
+            }
+            worker.prototype.getworkplace = function () {
+
+            }
+            console.log(worker);
+            return worker;
+        })(human);
+
+        var manager = (function (_worker) {
+            var manager_1 = new _worker;
+            function manager(name) {
+                _worker.call(this);
+                this.name = name || 'sb.'
+                this.job = 'manager';
+                this.leadworkers = new Array();
+                leadworkers[0] = 'aaa';
+                leadworkers[1] = 'bbb';
+                leadworders[3] = 'ccc';
+            }
+            manager.prototype = manager.__proto__;
+            manager.prototype.getleadworkers = function () {
+
+            }
+            console.log(manager);
+            return manager;
+        })(worker);
+    </script>
+</body>
+</html>

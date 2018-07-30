@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>主页</title>
+<link rel="stylesheet" href="">
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        //模块化
+        var BathRoom = (function () {
+            // 浴室的构造函数
+            function BathRoom() {
+                //this指针指本函数
+                this.name = '男生浴室';
+                this.height = 80;
+                this.width = 100;
+            }
+
+            return BathRoom;
+        })();  
+    </script>
+
+
+    <script>
+        var Parent = (function () {
+            function Parent(name) {
+                this.name = 'hello';
+                this.height = 180;
+                this.weight = 60;
+                this.eyes = 'big';
+            };
+
+            /**
+             * @author: wukangjun
+             * @param {Number（参数数据类型）} width: 宽度
+             * @param {Number} height: 高度
+             * @timer: 2018.2.10（时间版本）
+             * */
+            Parent.prototype.render = function () {
+                   
+            }
+            return Parent;
+        })();
+
+
+
+        var Login = (function (_Parent) {
+            var a = new _Parent();
+
+            function Login() {
+                _Parent.call(this);//继承属性
+                this.height = 190;
+               
+            };
+            Login.prototype = a.__proto__;//继承
+            Login.prototype.template = function () {
+                return `
+                    < div class="navbar-header col-md-offset-1" >
+                        <span class="navbar-brand" style="font-size:48px;color:black">电影售票系统</span>
+  　                </div >
+                `
+            }
+            console.log(Login);
+            return Login;
+        })(Parent);
+
+
+        var Main = (function () {
+            function Main(ele) {
+                this.element = ele;   //document.getElementById('root')
+                this.login = null;
+            }
+            Main.prototype.init = function () {
+                this.login = new Login();
+                this.element.innerHTML = this.login.template;
+            }
+            return Main;
+        })();
+
+        window.onload = function () {
+            var main = new Main(document.getElementById('root'));
+            main.init();
+        }
+    </script>
+</body>
+</html>
