@@ -1,88 +1,26 @@
-<!DOCTYPE html>
+ï»¿<!<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Ö÷Ò³</title>
-<link rel="stylesheet" href="">
+    <title>mailcheck</title>
+    <meta author="haoweiwen" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+        #canvas_ {
+            border: 1px solid green;
+        }
+        #Paint_canvas {
+            border: 1px solid red;
+        }
+    </style>
 </head>
 <body>
-    <div id="root"></div>
-    <script>
-        //Ä£¿é»¯
-        var BathRoom = (function () {
-            // Ô¡ÊÒµÄ¹¹Ôìº¯Êý
-            function BathRoom() {
-                //thisÖ¸ÕëÖ¸±¾º¯Êý
-                this.name = 'ÄÐÉúÔ¡ÊÒ';
-                this.height = 80;
-                this.width = 100;
-            }
+    <div id="app">
+        <!---ç”»å›¾çš„æ¨¡å—-->
+        <div id="canvas_area"></div>
+    </div>
+    <script src="../../plugins/Core.js"></script>
+    <script src="./js/Paint.js"></script>
+    <script src="./js/a.js"></script>
 
-            return BathRoom;
-        })();  
-    </script>
-
-
-    <script>
-        var Parent = (function () {
-            function Parent(name) {
-                this.name = 'hello';
-                this.height = 180;
-                this.weight = 60;
-                this.eyes = 'big';
-            };
-
-            /**
-             * @author: wukangjun
-             * @param {Number£¨²ÎÊýÊý¾ÝÀàÐÍ£©} width: ¿í¶È
-             * @param {Number} height: ¸ß¶È
-             * @timer: 2018.2.10£¨Ê±¼ä°æ±¾£©
-             * */
-            Parent.prototype.render = function () {
-                   
-            }
-            return Parent;
-        })();
-
-
-
-        var Login = (function (_Parent) {
-            var a = new _Parent();
-
-            function Login() {
-                _Parent.call(this);//¼Ì³ÐÊôÐÔ
-                this.height = 190;
-               
-            };
-            Login.prototype = a.__proto__;//¼Ì³Ð
-            Login.prototype.template = function () {
-                return `
-                    < div class="navbar-header col-md-offset-1" >
-                        <span class="navbar-brand" style="font-size:48px;color:black">µçÓ°ÊÛÆ±ÏµÍ³</span>
-  ¡¡                </div >
-                `
-            }
-            console.log(Login);
-            return Login;
-        })(Parent);
-
-
-        var Main = (function () {
-            function Main(ele) {
-                this.element = ele;   //document.getElementById('root')
-                this.login = null;
-            }
-            Main.prototype.init = function () {
-                this.login = new Login();
-                this.element.innerHTML = this.login.template;
-            }
-            return Main;
-        })();
-
-        window.onload = function () {
-            var main = new Main(document.getElementById('root'));
-            main.init();
-        }
-    </script>
 </body>
 </html>
